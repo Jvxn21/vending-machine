@@ -10,8 +10,11 @@ int main () {
     string done_insertBills = string();
     int dollar_choice = int();
     double bills[5] = {0, 1, 5, 10, 20};
-    double bill_inserted[4];
+    double bill_inserted[5];
     int i = 0;
+    double drink_price[4] = {.75, 1.50, .50, 1.00};
+    string choice_done = string();
+
 
     //------------------------------------------------------------------------------------
     //WELCOME MESSAGE
@@ -67,21 +70,51 @@ int main () {
 //================FOR LOOP TO ADD ALL VALUES INSIDE ARRAY====================
     balance = bill_inserted[0] + bill_inserted[1] + bill_inserted[2] + bill_inserted [3] + bill_inserted [4];
 
+    cout << endl << endl;
+    cout << "____________________________" << endl;
     cout << "Your total balance is: $" << balance << endl;
-
+    cout << "----------------------------" << endl;
+    
 
 //====================================RECEIVED MONEY FROM USER NOW BUY=============================================================
 
 
     //Showed balance, now give buying options
-    cout << "Below are our options" << endl;
-
-
-    cout << "========================================" << endl;
-    cout << left << setw(15) << "Coke" << "$1" << endl;
-    cout << left << setw(15) << "Gatorade" << "$1.50" << endl;
-    cout << left << setw(15) << "Juice Box" << "$.75" << endl;
-
-    cout << "========================================" << endl;
-
+    cout << "Today we are offering the following options:" << endl;
+    do {
+        
+        
+        
+        cout << "========================================" << endl;
+        cout << endl << setw(20) << left << "DRINKS" << endl;
+        cout << setw(20) << left << "-------" << endl;
+        cout << "[1] " << setw(20) << left << "Juice Box" << "$" << drink_price[0] << endl;
+        cout << "[2] " << setw(20) << left << "Sports Drink" << "$" << drink_price[1] << endl;
+        cout << "[3] " << setw(20) << left << "Water Bottle" << "$" << drink_price[2] << endl;
+        cout << "[4] " << setw(20) << left << "Soda Pop" << "$" << drink_price[3] << endl;
+        cout << endl;
+        cout << "========================================" << endl;
+        cout << endl << "Please input your choice: ";
+        int choice_user = int();
+        cin >> choice_user;
+        if (choice_user > 4){
+            cout << "That is not a valid choice!" << endl;
+        }
+        
+        
+        
+        
+        balance = balance - drink_price[choice_user - 1];
+        
+        if (balance < 0){
+            choice_done = "yes";
+        }
+        
+        cout << endl << endl << "Are you done making choices?" << endl << endl;
+        cin >> choice_done;
+        cout << endl;
+    } while (choice_done != "yes");
+    
+    cout << endl << "Thank you for shopping here today" << endl << "Here is your change: $" << balance << endl << endl;
+    
 }
